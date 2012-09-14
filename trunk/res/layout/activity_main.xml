@@ -1,0 +1,204 @@
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"><TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background="#eeeeee"
+        android:gravity="right"
+        android:textAppearance="@style/AppTheme"
+        android:textSize="45dp" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp" >
+
+<Button
+                android:id="@+id/b7"
+                style="@style/boton.weigth1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="botonclic"
+                android:text="@string/b7" />
+
+            <Button
+                android:id="@+id/b8"
+                style="@style/boton.weigth1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="botonclic"
+                android:text="@string/b8" />
+
+            <Button
+                android:id="@+id/b9"
+                style="@style/boton.weigth1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="botonclic"
+                android:text="@string/b9" />
+
+            <Button
+                android:id="@+id/bSuma"
+                style="@style/boton.weigth1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="botonclic"
+                android:text="+" />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp" >
+
+            <Button
+                android:id="@+id/b4"
+                style="@style/boton.weigth1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="botonclic"
+                android:text="@string/b4" />
+
+            <Button
+                android:id="@+id/b5"
+                style="@style/boton.weigth1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="botonclic"
+                android:text="@string/b5" />
+
+            <Button
+                android:id="@+id/b6"
+                style="@style/boton.weigth1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="botonclic"
+                android:text="@string/b6" />
+
+            <Button
+                android:id="@+id/bResta"
+                style="@style/boton.weigth1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="botonclic"
+                android:text="@string/bmenos" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp" >
+
+            <Button
+                android:id="@+id/b1"
+                style="@style/boton.weigth1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="botonclic"
+                android:text="@string/b1" />
+
+            
+            <Button
+                android:id="@+id/b2"
+                style="@style/boton.weigth1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="botonclic"
+                android:text="@string/b2" />
+
+            <Button
+                android:id="@+id/b3"
+                style="@style/boton.weigth1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="botonclic"
+                android:text="@string/b3" />
+
+            <Button
+                android:id="@+id/bMultiplicacion"
+                style="@style/boton.weigth1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="botonclic"
+                android:text="@string/bpor" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp" >
+
+            <Button
+                android:id="@+id/b0"
+                style="@style/boton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:onClick="botonclic"
+                android:text="@string/b0" />
+
+<Button
+                android:id="@+id/bPunto"
+                style="@style/boton.weigth1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="botonclic"
+                android:text="@string/bpunto" />
+
+            <Button
+                android:id="@+id/bDivision"
+                style="@style/boton.weigth1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="botonclic"
+                android:text="@string/bdivido" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp" >
+
+            <Button
+                android:id="@+id/bIgual"
+                style="@style/boton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="botonclic"
+                android:text="@string/bigual" />
+
+            <Button
+                android:id="@+id/bC"
+                style="@style/boton.rojo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="botonclic"
+                android:text="@string/bc" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>
