@@ -15,7 +15,21 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
+    int [][]mTileGrid;
+    int mXTileCount=3;
+    int mYTileCount=4;
+    
+    int [] rIDs={R.drawable.conejo,R.drawable.oveja,R.drawable.pollo,R.drawable.rinoceronte,R.drawable.serpiente,R.drawable.tiburon};
+    
+    
+    void initJuego()
+    {
+    	mTileGrid = new int[mXTileCount][mYTileCount];
+    	for(int i=0;i<mXTileCount;i++)
+    		for(int j=0;i<mYTileCount;j++)
+    			mTileGrid[i][j]=getRandomId();
+    }
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
@@ -30,7 +44,7 @@ public class MainActivity extends Activity {
     	((ImageView)v).setImageResource(getRandomId());
     	vOld=v;
     }
-    int [] rIDs={R.drawable.conejo,R.drawable.oveja,R.drawable.pollo,R.drawable.rinoceronte,R.drawable.serpiente,R.drawable.tiburon};
+    
     int getRandomId()
     {
     	int iValor=(int)(Math.random()*rIDs.length);
