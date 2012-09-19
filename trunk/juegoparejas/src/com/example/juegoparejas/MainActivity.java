@@ -1,7 +1,5 @@
 package com.example.juegoparejas;
 
-import java.util.Random;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,19 +13,25 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    int [][]mTileGrid;
-    int mXTileCount=3;
-    int mYTileCount=4;
+
     
     int [] rIDs={R.drawable.conejo,R.drawable.oveja,R.drawable.pollo,R.drawable.rinoceronte,R.drawable.serpiente,R.drawable.tiburon};
+    int [] rIVs={R.id.iv11,R.id.iv12,R.id.iv13,R.id.iv21,R.id.iv22,R.id.iv23,R.id.iv31,R.id.iv32,R.id.iv33,R.id.iv41,R.id.iv42,R.id.iv43};
+    int [] imagenes=new int[rIVs.length];
     
     
     void initJuego()
     {
-    	mTileGrid = new int[mXTileCount][mYTileCount];
-    	for(int i=0;i<mXTileCount;i++)
-    		for(int j=0;i<mYTileCount;j++)
-    			mTileGrid[i][j]=getRandomId();
+    	for(int i=0;i<rIVs.length;i++)
+    		imagenes[i]=getRandomId();
+    }
+    
+    int getPosicion(int ID)
+    {
+    	for(int i=0;i<rIVs.length;i++)
+    		if(ID==rIVs[i])
+    			return i;
+    	return -1;
     }
     
     @Override
@@ -41,8 +45,11 @@ public class MainActivity extends Activity {
     {
     	if(vOld!=null)
     		((ImageView)vOld).setImageResource(R.drawable.interrogacion);
-    	((ImageView)v).setImageResource(getRandomId());
+    	int iPosicion=getPosicion(v.getId());
+    	if(iPosicion>=0){
+    	((ImageView)v).setImageResource(rIDs[iPosicion]);
     	vOld=v;
+    	}
     }
     
     int getRandomId()

@@ -39,11 +39,11 @@
     <TableRow
         android:id="@+id/TableRow03"
         style="@style/fila">
-
+
         <ImageView
-            android:id="@+id/iv21"
-            style="@style/imagen"
-            android:onClick="pulsaImagen" />
+            android:id="@+id/ImageView11"
+            style="@style/imagen" 
+            android:onClick="pulsaImagen"/>
 
         <ImageView
             android:id="@+id/iv22"

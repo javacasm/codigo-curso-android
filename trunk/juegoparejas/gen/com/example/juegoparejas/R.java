@@ -22,6 +22,7 @@ public final class R {
         public static final int tiburon=0x7f020008;
     }
     public static final class id {
+        public static final int ImageView11=0x7f070007;
         public static final int TableLayout1=0x7f070000;
         public static final int TableRow01=0x7f07000e;
         public static final int TableRow02=0x7f07000a;
@@ -29,7 +30,6 @@ public final class R {
         public static final int iv11=0x7f070003;
         public static final int iv12=0x7f070004;
         public static final int iv13=0x7f070005;
-        public static final int iv21=0x7f070007;
         public static final int iv22=0x7f070008;
         public static final int iv23=0x7f070009;
         public static final int iv31=0x7f07000b;
