@@ -86,6 +86,7 @@ public class MainActivity extends Activity {
     	
     	// Inicializamos la puntuación
     	iPuntuacion=0;
+    	actualizaPuntuacion();
     	
     	btStop.setText(res.getString(R.string.stop));
     	
