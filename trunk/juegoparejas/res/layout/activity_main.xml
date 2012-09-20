@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:layout_weight="15"
             android:background="#FFCB58" >
-
+
             <TextView
                 android:id="@+id/tvPuntuacion"
                 android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
                 android:gravity="center_horizontal"
                 android:text="@string/puntuacion"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="30dp" />
+                android:textSize="25dp" />
 
             <TableRow
                 android:id="@+id/tableRow1"
@@ -121,7 +121,7 @@
                 android:typeface="monospace" />
 
         </TableLayout>
-
+
         <Button
             android:id="@+id/btStop"
             android:layout_width="wrap_content"
@@ -130,7 +130,7 @@
             android:layout_weight="1"
             android:onClick="stopGame"
             android:text="@string/stop"
-            android:textSize="35dp"
+            android:textSize="27dp"
             android:typeface="monospace" />
 
     </LinearLayout>
@@ -151,7 +151,7 @@
         android:text="@string/pulseparajugar"
         android:textSize="40dp"
         android:typeface="monospace" />
-
+
     <Button
         android:id="@+id/btStart"
         android:layout_width="wrap_content"
@@ -159,7 +159,7 @@
         android:layout_gravity="center_horizontal"
         android:onClick="startGame"
         android:text="@string/start"
-        android:textSize="35dp"
+        android:textSize="27dp"
         android:typeface="monospace" />
 
 </LinearLayout>
