@@ -8,6 +8,7 @@
             <item name="android:maxHeight">80dp</item>
             <item name="android:maxWidth">80dp</item>
             <item name="android:src">@drawable/interrogacion</item>
+            <item name="android:contentDescription">@string/descripcion</item>
   
 </style>
 <style name="fila">
