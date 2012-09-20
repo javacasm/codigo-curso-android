@@ -7,26 +7,37 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+	Chronometer crono;
+    TextView tvPuntos;
+    Button btStart;
+    Button btStop;
+    TableLayout tl;
+	
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
+        // Guardamos accesos a los controles que vamos a usar para que se puedan modificar más facilmente
+        
         crono=((Chronometer)findViewById(R.id.chronometer1));
-        
         tvPuntos=(TextView)findViewById(R.id.textView1);
-        
+        tl=(TableLayout)findViewById(R.id.TableLayout1);
+        btStart=(Button)findViewById(R.id.button1);
+        btStop=(Button)findViewById(R.id.button2);
         initJuego();
     }
-    Chronometer crono;
-    TextView tvPuntos;
     
+    int iPuntuacion=0;
     int [] rDibujos={R.drawable.conejo,R.drawable.oveja,R.drawable.pollo,R.drawable.rinoceronte,R.drawable.serpiente,R.drawable.tiburon};
     int [] rIVs={R.id.iv11,R.id.iv12,R.id.iv13,R.id.iv21,R.id.iv22,R.id.iv23,R.id.iv31,R.id.iv32,R.id.iv33,R.id.iv41,R.id.iv42,R.id.iv43};
     int [] cartas=new int[rIVs.length];
@@ -66,7 +77,12 @@ public class MainActivity extends Activity {
     		cartas[iRandomCarta]=rDibujos[i];
 
    		}
+    	
+    	// Ponemos a 0 el temporizador y el mensaje de pulsar Start
     	stopCrono(null);
+    	
+    	// Inicializamos la puntuación
+    	iPuntuacion=0;
     }
     
     int getPosicion(int ID)
@@ -97,7 +113,11 @@ public class MainActivity extends Activity {
     	if(bJugando==false)
     		return;
     	if(bEsperandoVolteo)
-    		return;
+    	{
+    		ivCartaPrimera.setImageResource(R.drawable.interrogacion);
+    		ivCartaSegunda.setImageResource(R.drawable.interrogacion);
+    		
+    	}
     	
     	// Busco que control han pulsado
     	int iPosicion=getPosicion(v.getId());
@@ -163,7 +183,11 @@ public class MainActivity extends Activity {
     public void startCrono(View v)
     {
     	crono.setBase(SystemClock.elapsedRealtime());
+    	initJuego();
     	crono.start();
+    	btStart.setVisibility(View.INVISIBLE);
+    	btStop.setVisibility(View.VISIBLE);
+    	tl.setVisibility(View.VISIBLE);
     	bJugando=true;
     }
     
@@ -173,6 +197,10 @@ public class MainActivity extends Activity {
     	Resources res=getResources();
     	tvPuntos.setText(res.getString(R.string.pulseparajugar));
     	bJugando=false;
+    	
+    	btStart.setVisibility(View.VISIBLE);
+    	btStop.setVisibility(View.INVISIBLE);
+    //	tl.setVisibility(View.INVISIBLE);
     	long elapsedMillis = SystemClock.elapsedRealtime() - crono.getBase();
     }
     
