@@ -29,6 +29,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
+        
         // Guardamos accesos a los controles que vamos a usar para que se puedan modificar más facilmente
         crono=((Chronometer)findViewById(R.id.chrono));
         tvPuntos=(TextView)findViewById(R.id.tvPuntuacion);
