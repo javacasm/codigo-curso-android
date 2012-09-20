@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -19,8 +20,9 @@ public class MainActivity extends Activity {
     TextView tvPuntos;
     Button btStart;
     Button btStop;
-    TableLayout tl;
-	
+    TableLayout tl; // Es donde se juega
+    LinearLayout ll; // Layout de inicio
+    
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,12 +30,12 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
         // Guardamos accesos a los controles que vamos a usar para que se puedan modificar m√°s facilmente
-        
-        crono=((Chronometer)findViewById(R.id.chronometer1));
-        tvPuntos=(TextView)findViewById(R.id.textView1);
-        tl=(TableLayout)findViewById(R.id.TableLayout1);
-        btStart=(Button)findViewById(R.id.button1);
-        btStop=(Button)findViewById(R.id.button2);
+        crono=((Chronometer)findViewById(R.id.chrono));
+        tvPuntos=(TextView)findViewById(R.id.tvPuntuacion);
+        tl=(TableLayout)findViewById(R.id.tlJuego);
+        ll=(LinearLayout)findViewById(R.id.llComienzo);
+        btStart=(Button)findViewById(R.id.btStart);
+        btStop=(Button)findViewById(R.id.btStop);
         initJuego();
     }
     
@@ -79,12 +81,16 @@ public class MainActivity extends Activity {
    		}
     	
     	// Ponemos a 0 el temporizador y el mensaje de pulsar Start
-    	stopCrono(null);
+    	stopGame(null);
+    	
+    	// Inicializamos la puntuaci√≥n
+    	iPuntuacion=0;
     	
     	// Inicializamos la puntuaci√≥n
     	iPuntuacion=0;
     }
     
+    // Devuelve la posiciÛn en el array de ids del control con el ID que pasamos
     int getPosicion(int ID)
     {
     	for(int i=0;i<rIVs.length;i++)
@@ -99,8 +105,7 @@ public class MainActivity extends Activity {
         return true;
     }
     
-    //http://stackoverflow.com/questions/1520887/how-to-pause-sleep-thread-or-process-in-android
-    
+ 
     int iCartaPrimera;
     int iCartaSegunda;
     boolean bPrimeraCarta=true;
@@ -108,16 +113,24 @@ public class MainActivity extends Activity {
     ImageView ivCartaSegunda;
     boolean bEsperandoVolteo=false;
     boolean bJugando=false;
+
+    void actualizaPuntuacion()
+    {
+    	Resources res=getResources();
+    	tvPuntos.setText(res.getString(R.string.puntuacion)+iPuntuacion);
+    }
+    
     public void pulsaImagen(View v)
     {
     	if(bJugando==false)
     		return;
-    	if(bEsperandoVolteo)
+    	
+    	if(bEsperandoVolteo) // Han pulsado mientras esperamos para voltear, entonces volteamos
     	{
     		ivCartaPrimera.setImageResource(R.drawable.interrogacion);
     		ivCartaSegunda.setImageResource(R.drawable.interrogacion);
-    		
     	}
+
     	
     	// Busco que control han pulsado
     	int iPosicion=getPosicion(v.getId());
@@ -134,6 +147,7 @@ public class MainActivity extends Activity {
     		//Guardo como primeraCarta
     		iCartaPrimera=iPosicion;
     		
+    		//Pasamos a esperar la segunda
     		bPrimeraCarta=false;
     	}
     	else
@@ -145,21 +159,30 @@ public class MainActivity extends Activity {
     		// Guardo la segunda carta
     		iCartaSegunda=iPosicion;
     		
+    		
+    		// Vemos si hay acierto o no
     		if(cartas[iCartaPrimera]==cartas[iCartaSegunda]) // Acierto
     		{
+    			// Marcamos como acertadas las 2 cartas
     			estadoCartas[iCartaPrimera]=ciCartaAcertada;
     			estadoCartas[iCartaSegunda]=ciCartaAcertada;
     			
+    			//Incrementamos la puntaciÛn
+    			iPuntuacion++;	
+    			// Actualizamos el texto de la puntuacion
+    			actualizaPuntuacion();
     		}
-    		else
+    		else  // Hemos fallado
     		{
+    			//Lanzamos el trabajo de invertir las cartas dentro de 2seg
     			bEsperandoVolteo=true;
 	        	Handler handler = new Handler(); 
 	        	handler.postDelayed(new Runnable() { 
 	               public void run() {
-            	   
+            	    //Invertiremos las cartas
                     ivCartaPrimera.setImageResource(R.drawable.interrogacion);
                     ivCartaSegunda.setImageResource(R.drawable.interrogacion);
+                    
                     bEsperandoVolteo=false;
                    }
 	        	}, 2000); 
@@ -174,33 +197,27 @@ public class MainActivity extends Activity {
     	return(int)(Math.random()*cartas.length);
     }
     
-//    int getRandomId()
-//    {
-//    	int iValor=(int)(Math.random()*rDibujos.length);
-//		return rDibujos[iValor];
-//    }
     
-    public void startCrono(View v)
+    public void startGame(View v)
     {
     	crono.setBase(SystemClock.elapsedRealtime());
     	initJuego();
     	crono.start();
-    	btStart.setVisibility(View.INVISIBLE);
-    	btStop.setVisibility(View.VISIBLE);
-    	tl.setVisibility(View.VISIBLE);
+   // 	tl.setVisibility(View.VISIBLE);
+   // 	ll.setVisibility(View.INVISIBLE);
+
     	bJugando=true;
     }
     
-    public void stopCrono(View v)
+    public void stopGame(View v)
     {
     	crono.stop();
-    	Resources res=getResources();
-    	tvPuntos.setText(res.getString(R.string.pulseparajugar));
+
     	bJugando=false;
     	
-    	btStart.setVisibility(View.VISIBLE);
-    	btStop.setVisibility(View.INVISIBLE);
-    //	tl.setVisibility(View.INVISIBLE);
+    	tl.setVisibility(View.INVISIBLE);
+    	//ll.setVisibility(View.VISIBLE);
+
     	long elapsedMillis = SystemClock.elapsedRealtime() - crono.getBase();
     }
     
