@@ -40,6 +40,8 @@ public class MainActivity extends Activity {
         return true;
     }
     
+    //http://stackoverflow.com/questions/1520887/how-to-pause-sleep-thread-or-process-in-android
+    
     View vOld=null;
     public void pulsaImagen(View v)
     {
