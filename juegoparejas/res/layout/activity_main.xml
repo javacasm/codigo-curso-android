@@ -2,7 +2,7 @@
     android:id="@+id/TableLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
-
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -10,41 +10,41 @@
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
-        android:text="Puntuacion"
+        android:text="@string/puntuacion"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+
     <TableRow
         android:id="@+id/tableRow1"
         style="@style/fila"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
-
+
         <ImageView
             android:id="@+id/iv11"
             style="@style/imagen"
             android:onClick="pulsaImagen" />
-
+
         <ImageView
             android:id="@+id/iv12"
             style="@style/imagen"
             android:onClick="pulsaImagen" />
-
+
         <ImageView
             android:id="@+id/iv13"
             style="@style/imagen"
             android:onClick="pulsaImagen" />
 
     </TableRow>
-
+
     <TableRow
         android:id="@+id/TableRow03"
         style="@style/fila">
 
         <ImageView
-            android:id="@+id/ImageView11"
+            android:id="@+id/iv21"
             style="@style/imagen" 
             android:onClick="pulsaImagen"/>
-
+
         <ImageView
             android:id="@+id/iv22"
             style="@style/imagen"
@@ -84,15 +84,18 @@
 
         <ImageView
             android:id="@+id/iv41"
-            style="@style/imagen" />
+            style="@style/imagen" 
+            android:onClick="pulsaImagen" />
 
         <ImageView
             android:id="@+id/iv42"
-            style="@style/imagen" />
+            style="@style/imagen" 
+            android:onClick="pulsaImagen" />
 
         <ImageView
             android:id="@+id/iv43"
-            style="@style/imagen" />
+            style="@style/imagen" 
+            android:onClick="pulsaImagen" />
 
     </TableRow>
 
