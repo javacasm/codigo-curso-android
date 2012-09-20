@@ -4,10 +4,11 @@
     android:background="#FFCB58" >
 
     <LinearLayout
+        android:id="@+id/llJuego"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
-
+
         <TableLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -16,7 +17,7 @@
             android:layout_height="match_parent"
             android:layout_weight="15"
             android:background="#FFCB58" >
-
+
             <TextView
                 android:id="@+id/tvPuntuacion"
                 android:layout_width="wrap_content"
@@ -127,7 +128,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:onClick="stopCrono"
+            android:onClick="stopGame"
             android:text="@string/stop"
             android:textSize="35dp"
             android:typeface="monospace" />
@@ -138,9 +139,8 @@
     android:id="@+id/llComienzo"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:visibility="invisible" >
-
+    android:orientation="vertical" >
+
     <TextView
         android:id="@+id/AvisoJuego"
         android:layout_width="fill_parent"
@@ -157,7 +157,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:onClick="startCrono"
+        android:onClick="startGame"
         android:text="@string/start"
         android:textSize="35dp"
         android:typeface="monospace" />

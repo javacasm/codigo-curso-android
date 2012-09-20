@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
     Button btStop;
     TableLayout tl; // Es donde se juega
     LinearLayout ll; // Layout de inicio
-    
+    LinearLayout llJuego;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,9 +33,13 @@ public class MainActivity extends Activity {
         crono=((Chronometer)findViewById(R.id.chrono));
         tvPuntos=(TextView)findViewById(R.id.tvPuntuacion);
         tl=(TableLayout)findViewById(R.id.tlJuego);
+        llJuego=(LinearLayout)findViewById(R.id.llJuego);
         ll=(LinearLayout)findViewById(R.id.llComienzo);
         btStart=(Button)findViewById(R.id.btStart);
         btStop=(Button)findViewById(R.id.btStop);
+        
+        res=getResources();
+        
         initJuego();
     }
     
@@ -48,8 +52,6 @@ public class MainActivity extends Activity {
     int ciCartaAcertada=1;
     int ciCartaPendiente=0;
     
-    
-    
     void initJuego()
     {
     	// Inicializo todas las cartas a 0
@@ -57,6 +59,7 @@ public class MainActivity extends Activity {
     	{
     		cartas[i]=0;
     		estadoCartas[i]=ciCartaPendiente;
+    		((ImageView)findViewById(rIVs[i])).setImageResource(R.drawable.interrogacion);
     	}
     	// Relleno las cartas con el id de la imagen que van a contener
     	for(int i=0;i<rDibujos.length;i++)
@@ -80,17 +83,18 @@ public class MainActivity extends Activity {
 
    		}
     	
+    	// Inicializamos la puntuación
+    	iPuntuacion=0;
+    	
+    	btStop.setText(res.getString(R.string.stop));
+    	
     	// Ponemos a 0 el temporizador y el mensaje de pulsar Start
     	stopGame(null);
     	
-    	// Inicializamos la puntuación
-    	iPuntuacion=0;
-    	
-    	// Inicializamos la puntuación
-    	iPuntuacion=0;
+
     }
     
-    // Devuelve la posici�n en el array de ids del control con el ID que pasamos
+    // Devuelve la posici�n en el array de ids del control con el ID que pasamos
     int getPosicion(int ID)
     {
     	for(int i=0;i<rIVs.length;i++)
@@ -113,10 +117,10 @@ public class MainActivity extends Activity {
     ImageView ivCartaSegunda;
     boolean bEsperandoVolteo=false;
     boolean bJugando=false;
-
+    Resources res;
     void actualizaPuntuacion()
     {
-    	Resources res=getResources();
+    	
     	tvPuntos.setText(res.getString(R.string.puntuacion)+iPuntuacion);
     }
     
@@ -129,6 +133,7 @@ public class MainActivity extends Activity {
     	{
     		ivCartaPrimera.setImageResource(R.drawable.interrogacion);
     		ivCartaSegunda.setImageResource(R.drawable.interrogacion);
+    		bEsperandoVolteo=false;
     	}
 
     	
@@ -167,10 +172,17 @@ public class MainActivity extends Activity {
     			estadoCartas[iCartaPrimera]=ciCartaAcertada;
     			estadoCartas[iCartaSegunda]=ciCartaAcertada;
     			
-    			//Incrementamos la puntaci�n
+    			//Incrementamos la puntaci�n
     			iPuntuacion++;	
     			// Actualizamos el texto de la puntuacion
     			actualizaPuntuacion();
+    			
+    			if(iPuntuacion==rDibujos.length )
+    			{
+    				
+    				btStop.setText("Volver a jugar");
+    				crono.stop();
+    			}
     		}
     		else  // Hemos fallado
     		{
@@ -179,11 +191,14 @@ public class MainActivity extends Activity {
 	        	Handler handler = new Handler(); 
 	        	handler.postDelayed(new Runnable() { 
 	               public void run() {
-            	    //Invertiremos las cartas
-                    ivCartaPrimera.setImageResource(R.drawable.interrogacion);
-                    ivCartaSegunda.setImageResource(R.drawable.interrogacion);
+            	    //Si todavía es necesario invertiremos las cartas
+	            	   if(bEsperandoVolteo)
+	            	   {
+	            		   ivCartaPrimera.setImageResource(R.drawable.interrogacion);
+	            		   ivCartaSegunda.setImageResource(R.drawable.interrogacion);
                     
-                    bEsperandoVolteo=false;
+	            		   bEsperandoVolteo=false;
+	            	   }
                    }
 	        	}, 2000); 
     		}
@@ -203,20 +218,25 @@ public class MainActivity extends Activity {
     	crono.setBase(SystemClock.elapsedRealtime());
     	initJuego();
     	crono.start();
-   // 	tl.setVisibility(View.VISIBLE);
-   // 	ll.setVisibility(View.INVISIBLE);
+    	llJuego.setVisibility(View.VISIBLE);
+    	ll.setVisibility(View.INVISIBLE);
 
     	bJugando=true;
     }
     
     public void stopGame(View v)
     {
+    	if(iPuntuacion==rDibujos.length)
+    	{
+    		initJuego();
+    		return;
+    	}
     	crono.stop();
 
     	bJugando=false;
     	
-    	tl.setVisibility(View.INVISIBLE);
-    	//ll.setVisibility(View.VISIBLE);
+    	llJuego.setVisibility(View.INVISIBLE);
+    	ll.setVisibility(View.VISIBLE);
 
     	long elapsedMillis = SystemClock.elapsedRealtime() - crono.getBase();
     }
