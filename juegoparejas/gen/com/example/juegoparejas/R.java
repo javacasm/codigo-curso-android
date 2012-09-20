@@ -22,29 +22,31 @@ public final class R {
         public static final int tiburon=0x7f020008;
     }
     public static final class id {
-        public static final int TableLayout1=0x7f070000;
-        public static final int TableRow01=0x7f07000e;
-        public static final int TableRow02=0x7f07000a;
-        public static final int TableRow03=0x7f070006;
-        public static final int button1=0x7f070014;
-        public static final int button2=0x7f070015;
-        public static final int chronometer1=0x7f070012;
-        public static final int iv11=0x7f070003;
-        public static final int iv12=0x7f070004;
-        public static final int iv13=0x7f070005;
-        public static final int iv21=0x7f070007;
-        public static final int iv22=0x7f070008;
-        public static final int iv23=0x7f070009;
-        public static final int iv31=0x7f07000b;
-        public static final int iv32=0x7f07000c;
-        public static final int iv33=0x7f07000d;
-        public static final int iv41=0x7f07000f;
-        public static final int iv42=0x7f070010;
-        public static final int iv43=0x7f070011;
-        public static final int menu_settings=0x7f070016;
-        public static final int tableRow1=0x7f070002;
-        public static final int tableRow2=0x7f070013;
-        public static final int textView1=0x7f070001;
+        public static final int AvisoJuego=0x7f070016;
+        public static final int TableRow01=0x7f07000f;
+        public static final int TableRow02=0x7f07000b;
+        public static final int TableRow03=0x7f070007;
+        public static final int btStart=0x7f070017;
+        public static final int btStop=0x7f070014;
+        public static final int chrono=0x7f070013;
+        public static final int iv11=0x7f070004;
+        public static final int iv12=0x7f070005;
+        public static final int iv13=0x7f070006;
+        public static final int iv21=0x7f070008;
+        public static final int iv22=0x7f070009;
+        public static final int iv23=0x7f07000a;
+        public static final int iv31=0x7f07000c;
+        public static final int iv32=0x7f07000d;
+        public static final int iv33=0x7f07000e;
+        public static final int iv41=0x7f070010;
+        public static final int iv42=0x7f070011;
+        public static final int iv43=0x7f070012;
+        public static final int llComienzo=0x7f070015;
+        public static final int llJuego=0x7f070000;
+        public static final int menu_settings=0x7f070018;
+        public static final int tableRow1=0x7f070003;
+        public static final int tlJuego=0x7f070001;
+        public static final int tvPuntuacion=0x7f070002;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
